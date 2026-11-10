@@ -19,7 +19,9 @@ Small operation, so the database should be small. Find a path with little or no 
 
 ## Reading of the options (PROPOSED)
 
-- **BigQuery first.** The free allowance is large relative to a small shop, there is a Bangkok region so data can sit in Thailand, and the work is analysis (scans, joins over years), which is what it is built for. Start-up cost is expected to be near zero. Still to check before relying on it: what the free tier requires (a billing account may be needed even if usage stays free) and how Bangkok compares with Singapore on features.
+- **BigQuery first.** The free allowance is large relative to a small shop, there is a Bangkok region so data can sit in Thailand, and the work is analysis (scans, joins over years), which is what it is built for. Start-up cost is expected to be near zero. Checked 2026-11-10: the no-card BigQuery sandbox is not enough for a mirror (10 GiB lifetime cap, tables expire after 60 days, no DML so no upserts, no streaming). A mirror needs a normal billing account. For Thailand the billing currency is THB, the only payment method listed is a credit or debit card, the currency cannot be changed after the account is created, and Google Cloud use in Thailand carries 7% VAT. Usage inside the free tier should cost nothing, but the card must exist. Still to check: how Bangkok compares with Singapore on features, and Thai tax invoice handling (the page is silent).
+
+AWS also has a Thailand region (`ap-southeast-7`, generally available since 7 Jan 2025, three Availability Zones). Its service list and a free analytic option were not checked, so it is not compared above.
 - **D1 second.** Cheapest to reach because the Cloudflare account exists, but it is SQLite with a 500 MB free cap and query limits. It becomes a reasonable choice only if the schema reply shows a very small database. The website account is Non's, and the mirror should sit in a company-owned account (`PROJECT-PLAN.md` §5c).
 - **Neon last.** Good Postgres, but the free plan is small, sleeps, has a 6-hour restore window, and there is no Thailand region. A paid plan would be needed for a real mirror.
 
