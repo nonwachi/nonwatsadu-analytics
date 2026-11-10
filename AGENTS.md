@@ -10,9 +10,9 @@ Who is who: Chi (Okai, Non's dad) is the shop owner and makes every decision abo
 
 ## Data rules (from the owner's handover guide, 10 Nov 2026)
 
-1. **No raw business data in this repo, in PR text or issues, or in any cloud AI chat.** Raw means Express sales, customers, costs, internal prices, email contents, bank documents, credentials, personal data. GitHub and Claude are cloud services.
-2. **Only data the owner has approved as cloud-safe may be analyzed with a cloud AI.** The planned form is an aggregated, customer-free extract. Record the approval (who, date, exact scope) in `docs/PROJECT-PLAN.md` before using any extract.
-3. **Extract files stay out of the repo** (`.gitignore` blocks common data formats). The repo holds the extract's schema, the code that analyzes it, and findings. Figures from an approved extract may appear in findings; figures from anything unapproved may not.
+1. **No raw business data in this repo or in PR text or issues.** Raw means Express sales, customers, costs, internal prices, email contents, bank documents, credentials, personal data. GitHub and Claude are cloud services.
+2. **The owner's current policy: raw data goes into a cloud AI only if Chi approves.** His rule is that raw Express data never goes to a cloud AI unless the data class, destination, method, purpose and his security gate all allow it. Non is asking him for that access (see `docs/PROJECT-PLAN.md`). Until Chi's approval is recorded there, with who, date and exact scope, treat all Express-derived data as not cleared for any cloud AI chat, including Claude.
+3. **Data files stay out of the repo, even once approved** (`.gitignore` blocks common data formats). The repo holds schemas, the code that analyzes the data, and findings. Findings may include figures only from data covered by a recorded approval.
 4. **No access to the shop's systems.** No NAS, VPN, connector or login is granted. Data arrives only as files the owner chooses to send.
 5. **The owner decides.** AI output is advice, a draft or a candidate, never a decision.
 6. **Label claims by evidence**, with source and date: VERIFIED-DATED (checked against a file or run), REPORTED (stated, not checked), DESIGN/PILOT, PROPOSED, HOLD, UNKNOWN. Never upgrade a label because someone repeated a claim. Hashes, counts and dates come from tool output, never typed from memory.
