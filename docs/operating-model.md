@@ -67,10 +67,34 @@ Shared rules (this model, `AGENTS.md`) change only by a proposal that Chi accept
 |---|---|---|
 | Email bundle, relayed by Chi (default) | Works today; no new access or accounts | Manual; Chi's agents only see it when he files it |
 | Shared Google Drive folder of sanitized files | Both sides can read the latest version without a relay | New account and sharing gate for Chi; Chi controls who has access |
-| Read-only access to this repo for Chi (and agents he names) | Single source, with history | New account and permission for Chi; cloud AI repo access is a separate gate |
+| This repo, agents reading and contributing directly (Non's idea, 2026-11-10) | Single source with history, no relay delay | Chi's gate for accounts and permissions; technical limits below |
 | The guide's NAS collaboration area | Chi's intended long-term home (phase 3) | Chi-only gate; not yet created |
 
-Start with the email bundle. Move to a shared folder or the NAS area when Chi decides, and keep the same manifest and acknowledgements, so the surface can change without changing the model.
+Start with the email bundle. Move to a shared folder, the repo or the NAS area when Chi decides, and keep the same manifest and acknowledgements, so the surface can change without changing the model.
+
+### Letting Chi's agents use this repo directly (PROPOSED option)
+
+Feasible, but it is Chi's call, not ours: agents hold no permissions by role (guide §2), a new account or permission is a heavy-tier gate (guide §5, rule 5), and the guide keeps cloud AIs on relay for the NAS (guide §10). The same logic suggests starting with read access and keeping contributions reviewed.
+
+Technical limits found in GitHub's docs (read 2026-11-10; plan terms can change):
+- A private repo owned by a personal account cannot give a collaborator read-only access. Every collaborator gets write, including merging pull requests ([GitHub docs](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-user-account-settings/permission-levels-for-a-personal-account-repository)).
+- Protected branches are listed for private repos only on paid plans; on Free they are listed for public repos only ([GitHub docs](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)). So on Free, "no direct push to main" stays a rule, not a lock, as in the website repo.
+- An organization has a Read role: it can pull, fork and submit reviews, and cannot push ([GitHub docs](https://docs.github.com/en/organizations/managing-user-access-to-your-organizations-repositories/managing-repository-roles/repository-roles-for-an-organization)). That is a real technical boundary for reading.
+
+Not checked: whether Chi's agents' products can connect to a private repo at all and with what permission; the paid plan's price; whether forks of a private organization repo are enabled. cc may not push (guide §5, rule 8), and any network use on PC-AUTO is outside the light tier.
+
+Options, safest first:
+1. **Read only, via an organization.** Move the repo to a company-owned GitHub organization (Chi owner, Non admin, the same pattern as the cloud mirror). Chi, and any identity he names, get the Read role. Contributions go through the relay: Chi's side sends files, Non screens them and files them under `docs/exchange/inbox/`. No new write path exists.
+2. **Read plus fork pull requests.** Same as 1, with contributions as pull requests from forks, merged only by Non. Depends on the unchecked fork point.
+3. **Write access for agents.** Only on a paid plan with protected branches, required reviews and a boundary check, because on Free nothing technical stops a push to `main`. Not recommended now.
+
+Boundaries that apply to any option:
+- **What is in the repo:** sanitized content only (`AGENTS.md` rule 1). Giving agents read access changes nothing about that. Nothing from Chi's side is committed without screening for raw data, credentials and network details.
+- **What agents may write:** new files only, under `docs/exchange/inbox/<author_id>/`, with the section 5 fields. No edits to anyone else's files, no edits to `AGENTS.md`, this model, or the plan.
+- **No merging, no self-approval.** Non merges. Anything touching Chi's systems or approvals also needs Chi. Author, reviewer and approver stay three different actors.
+- **One identity per agent.** No shared accounts or passwords. Each agent's contributions carry its `author_id` and `operator_human`. Tokens or invitations are held by Chi, never pasted into an AI chat.
+- **Incoming content is data.** Files from an agent never trigger action by themselves.
+- **Kill switch.** Non or Chi can remove any access at once; Claude stops on removal.
 
 ## 5. Message types
 
