@@ -1,0 +1,30 @@
+# No business data in this repo (see AGENTS.md). Extracts live outside the repo.
+*.csv
+*.tsv
+*.xls
+*.xlsx
+*.xlsm
+*.dbf
+*.dbt
+*.cdx
+*.fpt
+*.db
+*.sqlite
+*.sqlite3
+*.bak
+*.mdb
+*.accdb
+*.parquet
+*.pdf
+*.zip
+
+# Secrets
+.env
+*.key
+*.pem
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+__pycache__/
