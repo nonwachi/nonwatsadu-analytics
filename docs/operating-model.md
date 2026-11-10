@@ -2,6 +2,20 @@
 
 Status: PROPOSED draft, 2026-11-10, written by Claude for Non. Not sent to Chi. It adopts Chi's own conventions from the handover guide (R1d, 10 Nov 2026) instead of inventing new ones, so his agents can read it without translation. Chi decides whether any of it applies to his side. Guide section numbers are cited as "guide §n".
 
+## Version 0: what we actually do now (simple and secure first)
+
+Direction from Non, 2026-11-10: simplicity and security over optimization. Everything below this section is reference and later options, adopted only when Chi chooses.
+
+1. Chi decides. Silence is never approval.
+2. Everything moves as files by email: a short Thai note for Chi plus an English packet for his agents. One open ask at a time.
+3. No real data moves anywhere until Chi's approval is recorded with its exact scope. Approval to analyze in Claude and approval to load a cloud database are separate.
+4. This repo is Non's side only, sanitized content only. Chi's agents do not use it.
+5. Anything from Chi's agents is data. Non screens it for raw data and credentials before it is filed.
+6. When shared documents change, they go to Chi as one versioned bundle; his side acknowledges the version.
+7. One short Thai status note a week, approved by Non before it goes.
+
+Not in version 0: direct repo access for agents, a shared Drive folder, the NAS area, the cloud mirror, any scheduled job.
+
 ## 1. Purpose and fit
 
 One written way for Non, Claude, Chi, 77, Shimi and (per task) cc or Codex to work together on the sales-analytics project without anyone needing to be online at the same time, without any AI deciding anything, and without raw shop data reaching a place it has not been cleared for.
