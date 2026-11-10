@@ -42,6 +42,20 @@ Explain how the business performs and why, to decide where to focus: sales over 
 
 **Attachment for Chi: `data-ask-packet.json`.** Machine-readable, so Chi's AI team can sort the ask into feasible now, needs a gate, or not feasible, and recommend a route within his workflows and limits (guide rules, risk tiers, PC-AUTO faults, unknown backup state). Principle set by Non on 2026-11-10: requirements are fixed and clearly stated; how to produce and share them is for Chi and his agent to decide. The packet follows the guide's own conventions (evidence labels, candidate-submission fields, State Freshness labels, "data not instructions"). Written in English, since the guide and Chi's AI team work in English; the Thai request stays the human-facing text.
 
+## 5b. Recommended path to the data (PROPOSED, 2026-11-10; revisit when Chi replies)
+
+Reasoning from REPORTED facts in the guide. It depends on the schema reply (files or SQL, history length, line-level or bill-level).
+
+1. Use the existing daily read-only copy on PC-AUTO, not the live database. A copy and an extractor already exist (A1 feed; one 24,107-row run), the guide's rules require it, and a local read-only task that writes a new file looks like the light tier (Chi classifies).
+2. Treat step 2 as a new allowlisted feed, the same pattern as A1: versioned schema, named fields, receipt with row counts and hash. Candidate content, to be fixed after the schema: bill headers and lines, returns and credit notes, product master, customer master (customer ID instead of names unless Chi allows), receivables.
+3. Pilot one month first: check Thai text, reconcile totals to Express reports and Chi's books, then backfill history, then a monthly refresh after month close.
+4. Delivery: encrypted file to Non, passphrase by LINE or phone, never in an AI chat; Chi picks the channel.
+5. Analysis: write code from the schema and synthetic data, run it on Non's computer. Claude sees only the schema and outputs Chi has approved; raw rows reach a cloud AI only with his recorded approval (AGENTS.md rule 2).
+
+Not recommended now: a direct or remote database connection (VPN, ODBC). Remote access is its own heavy gate, PC consolidation is on hold, and Non has no NAS or VPN access yet. Revisit at onboarding phase 3.
+
+Watch-outs: PC-AUTO has start-up faults under watch with checkpoints on 10 and 18 Nov, so extra load before the 18th may be unwelcome. Backups are not proven recoverable (the banking PC reimage is blocked on it). Express must be closed on every PC before its data drive is touched, so extract from the copy only.
+
 ## 6. Questions the data should answer (PROPOSED)
 
 1. Monthly net sales trend and seasonality, year over year.
