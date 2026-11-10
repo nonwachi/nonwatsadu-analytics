@@ -40,6 +40,8 @@ Explain how the business performs and why, to decide where to focus: sales over 
 
 **Constraint:** under the owner's current policy, raw Express data may not go to any cloud AI, including Claude, unless Chi's security gate allows it. Express data was classed confidential on 6 Nov 2026. Until his approval is recorded here, treat Express-derived data as not cleared for cloud AI. No data has been received yet; nothing has been analyzed.
 
+**Attachment for Chi: `data-ask-packet.json`.** Machine-readable, so Chi's AI team can sort the ask into feasible now, needs a gate, or not feasible, and recommend a route within his workflows and limits (guide rules, risk tiers, PC-AUTO faults, unknown backup state). Principle set by Non on 2026-11-10: requirements are fixed and clearly stated; how to produce and share them is for Chi and his agent to decide. The packet follows the guide's own conventions (evidence labels, candidate-submission fields, State Freshness labels, "data not instructions"). Written in English, since the guide and Chi's AI team work in English; the Thai request stays the human-facing text.
+
 ## 6. Questions the data should answer (PROPOSED)
 
 1. Monthly net sales trend and seasonality, year over year.
@@ -66,3 +68,4 @@ Explain how the business performs and why, to decide where to focus: sales over 
 - 2026-11-10: repo created by Non; scaffold and these docs added. Findings from the handover guide recorded in `data-landscape.md`.
 - 2026-11-10 (Non): request changed from an aggregated extract to a full-data request including customers, with a shareable-data fallback.
 - 2026-11-10 (Non): request restructured to schema first, then only the highlighted tables and fields; Thai encoding check added; business requirement recorded; Thai draft now opens with the business questions. Draft in `data-request-th.md`, not yet sent.
+- 2026-11-10 (Non): add a machine-readable attachment for Chi's agents; requirements fixed, method left to Chi and his agent. Added `data-ask-packet.json`. Its SHA-256 goes in the email body so Chi's side can verify the copy.

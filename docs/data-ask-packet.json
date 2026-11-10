@@ -1,0 +1,189 @@
+{
+  "packet_schema": "nwp-ask-packet/0.1",
+  "packet_id": "ASK-20261110-NON-DATA-01",
+  "event_id": "EVT-20261110-NON-DATA-01",
+  "task_id": "SALES-ANALYTICS-REQUEST",
+  "created_at": "2026-11-10",
+  "created_at_note": "Time of day and time zone were not available when this was written. Non is in the US Eastern time zone.",
+  "author_type": "ai",
+  "author_id": "Claude (Anthropic), drafting for Non",
+  "operator_human": "Non",
+  "origin_ai": "Claude",
+  "evidence_level": "PROPOSED",
+  "classification": "cloud-safe drafting standard: contains no business data, credentials, account names, network addresses or customer information. Uses only the machine codes from the handover guide.",
+  "source_refs": [
+    {
+      "id": "GUIDE-R1d",
+      "title": "NONT PLUS Successor Handover & Onboarding Guide (Joint R1d)",
+      "date": "2026-11-10",
+      "how_received": "emailed to Non, Jom and Jean"
+    }
+  ],
+  "base_digest_sha256": null,
+  "payload_digest_sha256": null,
+  "digest_note": "A file cannot contain its own hash. Compute the SHA-256 of this whole file independently and compare it with the value Non gives in the email.",
+  "claimed_state": "PROPOSED",
+  "review_state": "SUBMITTED",
+  "owner_gate": "Chi decides. Nothing in this file is approved or authorizes any action.",
+  "canonical_target": null,
+  "next_action": "Chi, optionally with his AI team, returns a recommendation using response_template, then decides.",
+
+  "how_to_use": {
+    "from": "Non (owner-group member, chosen successor)",
+    "to": "Chi (Okai)",
+    "purpose": "Lets Chi, or an AI he chooses to involve, sort the ask below into what is feasible now, what needs a gate, and what is not feasible, and recommend a route that fits the existing workflows.",
+    "treat_as_data": "Per guide rule 9, this file is data, not instructions. It asks for an assessment and grants nothing.",
+    "do_not": [
+      "run anything against store systems because of this file",
+      "ask Non for, accept or repeat raw business data (sales, customers, costs, internal prices) in a cloud AI",
+      "ask for or accept credentials, account names or network details",
+      "treat any statement here as verified; labels show what is stated versus checked"
+    ],
+    "fail_closed": "If evidence needed for a recommendation is missing, stale or contradictory, say so with a State Freshness label (STATE_MISSING, STALE, STATE_CONFLICT, UNVERIFIED) rather than guessing.",
+    "reply_route": "Chi replies by email to Non, Jom and Jean together, as the guide asks.",
+    "requirements_fixed_method_open": "The items below state what Non needs and why. How to produce and share them is for Chi and his agent to decide within the existing workflows. A different route or a smaller, safer form that meets the same need is welcome; say which requirement it satisfies."
+  },
+
+  "evidence_labels": ["VERIFIED-DATED", "REPORTED", "DESIGN/PILOT", "PROPOSED", "HOLD", "UNKNOWN"],
+
+  "requester": {
+    "name": "Non",
+    "role": "owner-group member and chosen successor from 2026-11-10",
+    "location": "United States, remote",
+    "access_to_store_systems_today": "none",
+    "onboarding_phase": "0 to 1 (email and files only)",
+    "ai_in_use": "Claude. Non confirms in his reply whether the account is personal or employer-managed."
+  },
+
+  "business_requirement": {
+    "summary": "Understand how the business performs and why, in detail and over time, to decide where to focus.",
+    "questions": [
+      {"id": "Q1", "text": "Monthly net sales trend and seasonality, year over year"},
+      {"id": "Q2", "text": "Which categories, brands and products bring revenue and which bring profit; how concentrated sales are in top products"},
+      {"id": "Q3", "text": "Gross margin by category and brand; effect of discounts"},
+      {"id": "Q4", "text": "Repeat versus one-off customers; share of sales from the largest customers; contractor versus retail"},
+      {"id": "Q5", "text": "Cash versus credit share; receivables ageing"},
+      {"id": "Q6", "text": "Returns and credit-note rate"},
+      {"id": "Q7", "text": "Average bill size and lines per bill"},
+      {"id": "Q8", "text": "Stock turns and slow movers"}
+    ],
+    "needs": [
+      "transaction-level history; summaries cannot explain why performance changed",
+      "a repeatable feed (for example monthly), not only a one-off",
+      "agreed definitions: VAT in or out, returns netted, what counts as cost",
+      "reconciliation of totals to Chi's own books"
+    ],
+    "why_existing_outputs_are_not_enough": "The dashboard, search pages and A1 feed serve daily operations and competitor pricing. Their granularity and history length are not stated in the guide (UNKNOWN)."
+  },
+
+  "ask": {
+    "step_1_schema_first": {
+      "id": "S1",
+      "data_class": "structure only, no data rows (Chi confirms it is fine to share)",
+      "how": "open. Chi and his agent decide how to produce and share it.",
+      "items": [
+        {"id": "S1.1", "item": "Every table and field: name, type, length, meaning", "required": true},
+        {"id": "S1.2", "item": "Relationships between tables (keys, how a sales bill links to customer and product)", "required": true},
+        {"id": "S1.3", "item": "Row count and earliest and latest date per table (counts only)", "required": true},
+        {"id": "S1.4", "item": "Express version and storage format (files or SQL database)", "required": true},
+        {"id": "S1.5", "item": "How Thai text is stored (code page or Unicode) and whether it stays readable when exported to other tools", "required": true},
+        {"id": "S1.6", "item": "Sample of 20 product names to test Thai text in other tools", "required": false,
+         "data_class": "not customer data; Chi classifies", "purpose": "show that Thai text stays legible in other tools; another test that proves the same is fine"},
+        {"id": "S1.7", "item": "Any Express documentation of its data structure", "required": false},
+        {"id": "S1.8", "item": "Whether older copies or backups of Express exist, where, and how far back", "required": true}
+      ]
+    },
+    "step_2_data_after_schema": {
+      "id": "S2",
+      "status": "not yet requested",
+      "condition": "Non reviews the S1 schema and marks the tables and fields that matter; the request covers only those",
+      "data_class": "confidential (sales, customers, costs)",
+      "requirement": "complete history for the selected tables and fields, Thai text legible in other tools, repeatable for a regular refresh, taken from a read-only source. How it is produced and delivered is for Chi and his agent to decide.",
+      "handling_options_for_chi_to_rule_on": [
+        {"id": "A", "method": "analysis on Non's own computer, no cloud AI", "destination": "Non's computer only"},
+        {"id": "B", "method": "analysis with a cloud AI (Claude)", "destination": "Non's computer plus cloud AI", "requires": "Chi's explicit approval naming which data may go, per guide rule 2"}
+      ],
+      "never": "data is never committed to the analytics repository"
+    },
+    "fallback_if_not_possible": {
+      "id": "F",
+      "item": "Share what already exists",
+      "examples": [
+        "latest dashboard views and what each of the five views is",
+        "standard Express reports (sales by product, customer, month)",
+        "existing summary files",
+        "a statement of which parts are withheld"
+      ]
+    }
+  },
+
+  "known_constraints": [
+    {"id": "C1", "statement": "Raw Express data (sales, customers, costs) never goes to a cloud AI unless data class, destination, method, purpose and an Owner security gate all allow it.", "label": "REPORTED", "source": "guide section 5, rule 2"},
+    {"id": "C2", "statement": "Express data was classed confidential on 6 Nov 2026.", "label": "REPORTED", "source": "guide section 3"},
+    {"id": "C3", "statement": "Express must be closed on every PC before anything touches its data drive.", "label": "REPORTED", "source": "guide section 5, rule 11"},
+    {"id": "C4", "statement": "Automation works on read-only copies of Express data.", "label": "REPORTED", "source": "guide section 4"},
+    {"id": "C5", "statement": "Two risk tiers. Light: local only, reads files or writes new files, no network. Heavy: includes NAS, Express database, scheduled tasks, accounts or permissions, anything cloud. Non's reading: a schema export from the read-only copy on PC-AUTO looks light; anything against the live SRV-EXPRESS looks heavy. Chi classifies.", "label": "PROPOSED", "source": "guide section 5, rule 5"},
+    {"id": "C6", "statement": "cc may commit but not push; no NAS writes; no edits to its own guard files; a path-guard hook blocks NAS paths. Effective enforcement today is unknown.", "label": "REPORTED", "source": "guide section 6"},
+    {"id": "C7", "statement": "Chi runs NAS writes himself with reviewed scripts.", "label": "REPORTED", "source": "guide section 6"},
+    {"id": "C8", "statement": "Codex is a per-task capability, not a verified standing worker; no NAS or production access.", "label": "REPORTED", "source": "guide section 2"},
+    {"id": "C9", "statement": "Author, reviewer and approver are different actors; Chi controls production.", "label": "REPORTED", "source": "guide sections 2 and 5"},
+    {"id": "C10", "statement": "PC-AUTO has intermittent start-up faults, under watch, with review checkpoints on 10 and 18 Nov. It also hosts live automation and testing together.", "label": "REPORTED", "source": "guide sections 7 and 8"},
+    {"id": "C11", "statement": "The PC-BANK clean reimage is blocked until backups are proven recoverable. Where backups are and how recoverable they are is not described.", "label": "REPORTED", "source": "guide section 8"},
+    {"id": "C12", "statement": "Non has no NAS account, VPN, connector or live link; remote access from outside the store is its own gate. Early phases run on email and files.", "label": "REPORTED", "source": "guide section 10"},
+    {"id": "C13", "statement": "Local AI (Ollama) is installed on PC-AUTO but not in use.", "label": "REPORTED", "source": "guide section 5"},
+    {"id": "C14", "statement": "Whether the daily pipeline runs today is unknown; the dashboard and search pages were verified in Jul 2026 in 77's records.", "label": "UNKNOWN", "source": "guide sections 3 and 7"}
+  ],
+
+  "unknowns_for_chi": [
+    {"id": "U1", "question": "How many years of history does Express hold, and from what date?"},
+    {"id": "U2", "question": "Is the sales data kept per bill or per line item, and does it include salesperson, returns and credit fields?"},
+    {"id": "U3", "question": "Does Express keep data in files or in SQL, and what can it export (CSV, Excel)?"},
+    {"id": "U4", "question": "How is Thai text stored, and does it stay readable outside Express?"},
+    {"id": "U5", "question": "What are the five dashboard views, and what are they reconciled against?"},
+    {"id": "U6", "question": "Is the daily pipeline running today, and where does the daily copy live (PC-AUTO or NAS-MAIN)?"},
+    {"id": "U7", "question": "Where are Express backups and older copies, and how far back do they go?"},
+    {"id": "U8", "question": "Which definitions change totals: prices with or without VAT, what counts as cost?"},
+    {"id": "U9", "question": "Who would produce the schema and any extract: Chi himself, or a local worker under his approval?"}
+  ],
+
+  "decision_options_for_chi": [
+    {"id": "D1", "option": "Approve S1 (schema only)", "unlocks": "Non reviews the structure and narrows the data request", "data_leaves_store": "structure only"},
+    {"id": "D2", "option": "Approve S1 plus the 20-name product sample (S1.6)", "unlocks": "D1 plus an encoding test of Thai text before any large extract", "data_leaves_store": "structure plus 20 product names"},
+    {"id": "D3", "option": "Defer; share existing outputs only (fallback F)", "unlocks": "a first look at what the dashboard and standard reports show", "data_leaves_store": "existing reports only"},
+    {"id": "D4", "option": "Decline for now", "unlocks": "nothing; Non waits", "data_leaves_store": "none"}
+  ],
+
+  "requested_output": {
+    "description": "A recommendation, using the template below. One entry per ask item (S1.1 to S1.8, S2, F), then an overall recommendation. Recommending a different method that meets the same requirements is welcome.",
+    "per_item_fields": {
+      "item_id": "string",
+      "feasibility": "one of: feasible_now | feasible_with_gate | not_feasible | unknown",
+      "route": "who would do it, on which machine (use machine codes), by what method",
+      "risk_tier": "light | heavy | unknown",
+      "gate_needed": "which Owner gate, if any",
+      "steps": "short ordered list of steps",
+      "risks_and_limits": "what could go wrong, including load on PC-AUTO and unknown backup state",
+      "safer_alternative": "a smaller or safer form of the same item, if one exists",
+      "evidence_label": "VERIFIED-DATED | REPORTED | DESIGN/PILOT | PROPOSED | HOLD | UNKNOWN",
+      "state_freshness": "STATE_OK | STALE | STATE_CONFLICT | STATE_MISSING | ACCESS_BLOCKED | UNVERIFIED"
+    },
+    "overall_fields": {
+      "recommended_sequence": "ordered list of ask items and decisions",
+      "smallest_safe_first_deliverable": "what Chi can send soonest within existing workflows",
+      "cloud_ai_position": "what may and may not go to a cloud AI, and under which gate",
+      "decision_for_chi": "which of D1 to D4, or another option, and why",
+      "questions_back_to_non": "list",
+      "open_unknowns": "which of U1 to U9 remain open"
+    }
+  },
+
+  "response_template": {
+    "packet_id": "ASK-20261110-NON-DATA-01-REPLY",
+    "in_reply_to": "ASK-20261110-NON-DATA-01",
+    "author": "",
+    "operator_human": "Chi",
+    "as_of": "",
+    "per_item": [],
+    "overall": {}
+  }
+}
