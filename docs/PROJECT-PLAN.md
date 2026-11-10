@@ -56,6 +56,21 @@ Not recommended now: a direct or remote database connection (VPN, ODBC). Remote 
 
 Watch-outs: PC-AUTO has start-up faults under watch with checkpoints on 10 and 18 Nov, so extra load before the 18th may be unwelcome. Backups are not proven recoverable (the banking PC reimage is blocked on it). Express must be closed on every PC before its data drive is touched, so extract from the copy only.
 
+## 5c. Target: a cloud mirror, not a migration (Non, 2026-11-10; design PROPOSED)
+
+Express on SRV-EXPRESS stays the system of record, untouched. A cloud database follows it one way, kept in sync from the existing daily read-only copy. Non, Jom and Jean query the mirror. Nothing writes back.
+
+Flow: Express, then daily read-only copy on PC-AUTO (exists), then an incremental extract of allowlisted tables, then an encrypted push to a private cloud landing area, then upserts into the mirror, then a reconciliation receipt each run (row counts, sums, hash). A failed reconciliation holds the update and flags it, the same fail-closed idea as Chi's data guard.
+
+Mirror design points:
+- Idempotent upserts by primary key; the first sync is the backfill.
+- Edits, voids and backdated entries need handling. Needs from the schema: primary keys, last-modified timestamps, void or cancel flags. Without reliable timestamps, re-snapshot recent months each run and diff, with periodic full refreshes.
+- The account is owned by the company with Chi as owner and Non as admin, not Non's personal account. Encryption at rest and in transit, least-privilege roles, MFA, audit logs.
+- Region is a deliberate choice. Customer personal data sent abroad falls under Thai PDPA cross-border rules (PDPC notifications effective 24 Mar 2024: adequacy under section 28, or safeguards under section 29 such as standard contractual clauses). Minimize personal fields in the mirror and ask Thai counsel before any go offshore. Not legal advice.
+- Ready now, no real data: provision an empty company-owned project and test with synthetic data. Real data waits for Chi's recorded approval (AGENTS.md rule 2).
+
+Questions to add for Chi after his reply: primary keys, last-modified and void fields, whether posted documents can be edited or backdated.
+
 ## 6. Questions the data should answer (PROPOSED)
 
 1. Monthly net sales trend and seasonality, year over year.
