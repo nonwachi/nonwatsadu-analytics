@@ -28,6 +28,17 @@ The guide's cockpit plan and its VAT lesson ("check whether a price includes VAT
 - Whether Express stores data as files or in a SQL database, and what its export options are
 - Where the daily copy sits and in what format
 
+## Role of the main NAS (NAS-MAIN)
+
+REPORTED (guide §6, §7). The shared shelf for finished work and team knowledge, not the origin of sales data.
+
+- AI Work Exchange (AWE): where the A1 product feed lands, with a receipt, for the pricing work
+- Knowledge Hub: canonical team knowledge; authority moved to the NAS 30 Sep 2026; changes only through a publisher script Chi runs
+- Filed documents from the OCR pipeline (bank and finance PDFs), git repositories, shared files, the notification server
+- Chi runs all NAS writes himself; the coding helper (cc) is blocked from NAS paths by a hook (enforcement today UNKNOWN)
+
+UNKNOWN: whether the daily Express copy or dashboard output is stored on the NAS or only on the automation PC; where Express backups live; the share and permission map. Asked in `data-request-th.md` §4.
+
 ## How to reach the data
 
 - **Only Chi can.** Non has no access. NAS accounts, VPN and connectors are not part of the invitation; remote access is its own gate. Early phases run on email and files only (guide §10).
