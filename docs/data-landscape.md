@@ -39,6 +39,18 @@ REPORTED (guide §6, §7). The shared shelf for finished work and team knowledge
 
 UNKNOWN: whether the daily Express copy or dashboard output is stored on the NAS or only on the automation PC; where Express backups live; the share and permission map. Asked in `data-request-th.md` §4.
 
+## Thai text and encoding
+
+UNKNOWN for Express: the guide says nothing about it, and public sources found on 10 Nov 2026 did not describe Express's storage format.
+
+General background, not from the guide and not confirmed for Express: older Thai Windows software often stores text in a legacy Thai code page (TIS-620, ISO 8859-11 or Windows-874) instead of Unicode (UTF-8). Such text shows as garbled characters when a tool assumes the wrong encoding. That is usually fixable once the right code page is known. It is not fixable if an earlier step already replaced Thai characters with "?". Reference pages on these encodings: [Windows-874 mapping (encoding_rs)](https://docs.rs/crate/encoding_rs/0.8.6/source/doc/windows-874.txt), [ISO 8859-11 decoding guide](https://mojoauth.com/dev-guides/iso-8859-11-encoding--go.md).
+
+Plan: ask Chi how Thai is stored, and for about 20 product names (not customer data) as a test sample. Decode them with the candidate encodings and compare against what Express shows on screen before any large extract. Ask for extracts as UTF-8 (CSV for Excel needs UTF-8 with a byte-order mark to show Thai correctly).
+
+## Schema first
+
+Decided 2026-11-10 (Non): ask Chi for the full data schema before any data. Names, types, relationships, row counts and date ranges, no rows. Non then marks the tables and fields that matter, and the data request covers only those. A schema describes structure, not business data; Chi confirms it is fine to share.
+
 ## How to reach the data
 
 - **Only Chi can.** Non has no access. NAS accounts, VPN and connectors are not part of the invitation; remote access is its own gate. Early phases run on email and files only (guide §10).
