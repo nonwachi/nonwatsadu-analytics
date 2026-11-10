@@ -20,6 +20,10 @@ Evidence labels: VERIFIED-DATED (checked on a stated date, in the named author's
 
 The guide's cockpit plan and its VAT lesson ("check whether a price includes VAT before trusting a margin") imply Express holds customer, product, cost and price. No field list is given.
 
+## Express file format (REPORTED by third parties, 2026-11-10)
+
+Public forum posts and an open-source app indicate Express stores data as DBF files (FoxPro-style) and that Thai text is CP874. Not from the guide, not checked for this shop. Details and implications: `express-compatibility.md`.
+
 ## Not stated anywhere in the guide
 
 - How many years of history exist, and the date range

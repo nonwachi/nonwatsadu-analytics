@@ -71,6 +71,8 @@ Mirror design points:
 
 Questions to add for Chi after his reply: primary keys, last-modified and void fields, whether posted documents can be edited or backdated.
 
+Express format research and mirror implications: `express-compatibility.md` (REPORTED by third parties: DBF files, CP874 Thai; not this shop's data).
+
 Hosting options and low-cost start: `mirror-options.md` (BigQuery in Bangkok on the free tier is the leading candidate, PROPOSED; size UNKNOWN until the schema arrives).
 
 ## 6. Questions the data should answer (PROPOSED)
@@ -103,3 +105,4 @@ Hosting options and low-cost start: `mirror-options.md` (BigQuery in Bangkok on 
 - 2026-11-10: SENT by Non (via Claude, on his go-ahead) to Chi's company address, cc Jom and Jean, on the thread of the guide email. Thai cover email with `data-ask-packet.json` attached. Packet SHA-256: b934f76e8dceb0a45263444eb6a65a092a766820e704775409b440195cb1a3dd. Waiting for Chi's reply (open items 2 and 5).
 - 2026-11-10: introduction the guide asked for SENT to Chi only (Thai, same thread): work as a Product Manager experienced in e-commerce, analytics, product and brand strategy; strong technical background; Claude on a personal account, nothing connected to store systems; 1 to 3 hours a week; remote from the US; Thai with family, English with AI. Includes a short English line for 77, Shimi and the AI team stating this is background only and changes no rule or gate.
 - 2026-11-10 (Non): the shop is small, so keep the mirror small and cheap to start. Added `mirror-options.md` comparing BigQuery, Cloudflare D1 and Neon from vendor pages read today. Nothing provisioned.
+- 2026-11-10 (Non): asked for a security view and an Express schema deep dive. Added a security section to `mirror-options.md` and `express-compatibility.md`: public sources say Express uses DBF files and CP874 Thai (REPORTED, third party). Proposed: step 1 becomes a DBF file inventory from headers, no rows. Not sent to Chi.

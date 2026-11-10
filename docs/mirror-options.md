@@ -25,6 +25,19 @@ AWS also has a Thailand region (`ap-southeast-7`, generally available since 7 Ja
 - **D1 second.** Cheapest to reach because the Cloudflare account exists, but it is SQLite with a 500 MB free cap and query limits. It becomes a reasonable choice only if the schema reply shows a very small database. The website account is Non's, and the mirror should sit in a company-owned account (`PROJECT-PLAN.md` §5c).
 - **Neon last.** Good Postgres, but the free plan is small, sleeps, has a 6-hour restore window, and there is no Thailand region. A paid plan would be needed for a real mirror.
 
+## Security (Chi's main concern)
+
+What was read: BigQuery's [data governance page](https://docs.cloud.google.com/bigquery/docs/data-governance) lists default encryption at rest and in transit, optional customer-managed keys, IAM roles for users, groups and service accounts, VPC Service Controls, audit logs, column- and row-level security, and data masking. Security pages for D1 and Neon were not read, so this is not a ranking of vendors. Comparable controls probably exist elsewhere; that is unverified.
+
+Where the real risk sits (PROPOSED): less in the warehouse than in the path to it, which is a new outbound route from the shop's automation PC.
+- **One-way, outbound only.** The shop PC pushes files out. Nothing connects in. No write-back to Express, no VPN, no remote database login to the shop.
+- **Least-privilege push credential.** It can only add files to one landing location. It cannot read, list or delete. Stored on PC-AUTO under Chi's control, rotated, never in this repo or any AI chat. PC-AUTO has start-up faults under watch and backups not proven recoverable, so the credential must be easy to revoke.
+- **Company-owned account.** Chi is owner, Non is admin, two-step verification required for both, a separate read-only analyst role, audit logs on and reviewed.
+- **Minimize personal data.** Replace customer names, phones and addresses with customer codes at extract time, with the lookup kept by Chi, until a real need is shown. Column-level security can later restrict any personal columns.
+- **Fail closed.** The reconciliation receipt (counts, sums, hash) must match or the load is held, the same idea as Chi's data guard.
+- **Chi's gate.** Under the guide's rules this egress route needs his approval of data class, destination, method and purpose before any real data moves. Synthetic data only until then.
+- **Not legal advice:** see the PDPA section below.
+
 ## Region and PDPA
 
 Storing in Bangkok keeps the stored copy in Thailand. That does not by itself settle access from the US or any personal data sent abroad. Ask Thai counsel before real customer data is loaded. Minimize personal fields in the mirror. Not legal advice. Background: [Tilleke & Gibbins on PDPC cross-border rules](https://www.tilleke.com/insights/thailand-unveils-regulations-for-cross-border-personal-data-transfer).
