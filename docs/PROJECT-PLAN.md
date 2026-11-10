@@ -96,6 +96,10 @@ Hosting options and low-cost start: `mirror-options.md` (BigQuery in Bangkok on 
 6. Decide who produces the schema and extracts (Chi, or his local worker under his approval).
 7. Update the Claude Project pointer doc so analytics chats start from this repo (not done; needs Non's yes).
 
+## 7a. Approvals record (Chi's decisions that govern this work; copies, Chi's ledger is canonical)
+
+None recorded. Fields per entry: approval_id, gate, who approved, date, Chi's words verbatim, exact scope, destination, method, purpose, conditions, review-by date, status. See `operating-model.md` §7.
+
 ## 8. Change log
 
 - 2026-11-10: repo created by Non; scaffold and these docs added. Findings from the handover guide recorded in `data-landscape.md`.
@@ -106,3 +110,4 @@ Hosting options and low-cost start: `mirror-options.md` (BigQuery in Bangkok on 
 - 2026-11-10: introduction the guide asked for SENT to Chi only (Thai, same thread): work as a Product Manager experienced in e-commerce, analytics, product and brand strategy; strong technical background; Claude on a personal account, nothing connected to store systems; 1 to 3 hours a week; remote from the US; Thai with family, English with AI. Includes a short English line for 77, Shimi and the AI team stating this is background only and changes no rule or gate.
 - 2026-11-10 (Non): the shop is small, so keep the mirror small and cheap to start. Added `mirror-options.md` comparing BigQuery, Cloudflare D1 and Neon from vendor pages read today. Nothing provisioned.
 - 2026-11-10 (Non): asked for a security view and an Express schema deep dive. Added a security section to `mirror-options.md` and `express-compatibility.md`: public sources say Express uses DBF files and CP874 Thai (REPORTED, third party). Proposed: step 1 becomes a DBF file inventory from headers, no rows. Not sent to Chi.
+- 2026-11-10 (Non): asked for an operating model for safe async collaboration with Chi's agents, and what role the GitHub repo plays. Drafted `operating-model.md` on the guide's own conventions: relay through people, candidate lifecycle, gates, approvals record, and a Shared Pack with acknowledgements so both sides see the same versions. Repo role: Non's side authoring and version control for sanitized content, not a shared surface unless Chi opts in. PROPOSED, not sent. Decisions for Non listed in §13 of that file.
